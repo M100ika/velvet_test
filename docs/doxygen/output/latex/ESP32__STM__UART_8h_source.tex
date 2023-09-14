@@ -1,0 +1,45 @@
+\hypertarget{ESP32__STM__UART_8h_source}{}\doxysection{ESP32\+\_\+\+STM\+\_\+\+UART.\+h}
+\label{ESP32__STM__UART_8h_source}\index{/home/esp/esp\_projects/platformio\_velvet/Velvet\_test/lib/ESP32\_STM\_UART/include/ESP32\_STM\_UART.h@{/home/esp/esp\_projects/platformio\_velvet/Velvet\_test/lib/ESP32\_STM\_UART/include/ESP32\_STM\_UART.h}}
+\mbox{\hyperlink{ESP32__STM__UART_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ ESP32\_STM\_UART\_H}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ ESP32\_STM\_UART\_H}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <Arduino.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <HardwareSerial.h>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classESP32__STM__UART}{ESP32\_STM\_UART}}\ \{}
+\DoxyCodeLine{00028\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00035\ \ \ \mbox{\hyperlink{classESP32__STM__UART}{ESP32\_STM\_UART}}(HardwareSerial\ \&serial,\ uint32\_t\ baudRate);}
+\DoxyCodeLine{00041\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classESP32__STM__UART_aef1a4595b1d53bbffdddaaebf126cf9f}{check\_wifi}}();}
+\DoxyCodeLine{00048\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classESP32__STM__UART_ac055e9f800bed6f3a38ba53b2cd1b22f}{processIncomingMessage}}();}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00051\ \ \ HardwareSerial\ \&\_serial;\ }
+\DoxyCodeLine{00052\ \ \ uint32\_t\ \_baudRate;\ }
+\DoxyCodeLine{00053\ \ \ uint8\_t*\ \_firmwareData;\ }
+\DoxyCodeLine{00054\ \ \ \textcolor{keywordtype}{size\_t}\ \_firmwareSize;\ }
+\DoxyCodeLine{00064\ \ \ \textcolor{keywordtype}{bool}\ sendDataToServer(uint8\_t\ *cowId,\ uint32\_t\ ts,\ \textcolor{keywordtype}{float}\ *weight,\ uint8\_t\ weightCount);}
+\DoxyCodeLine{00072\ \ \ \textcolor{keywordtype}{void}\ checkFirmware(uint8\_t\ version0,\ uint8\_t\ version1);}
+\DoxyCodeLine{00079\ \ \ \textcolor{keywordtype}{void}\ sendWeightRsp(uint8\_t\ result);}
+\DoxyCodeLine{00087\ \ \ \textcolor{keywordtype}{void}\ sendTimestampRsp(uint32\_t\ timestamp,\ uint8\_t\ result);}
+\DoxyCodeLine{00093\ \ \ \textcolor{keywordtype}{void}\ sendWeightCmdTransmitPrepare();}
+\DoxyCodeLine{00101\ \ \ \textcolor{keywordtype}{void}\ sendFirmwareToSTM(\textcolor{keyword}{const}\ uint8\_t\ *firmwareData,\ \textcolor{keywordtype}{size\_t}\ firmwareSize);}
+\DoxyCodeLine{00108\ \ \ \textcolor{keywordtype}{void}\ sendCheckFwRsp(uint8\_t\ result);}
+\DoxyCodeLine{00117\ \ \ String\ calculateCRC32(uint8\_t\ *data,\ uint32\_t\ dataSize);}
+\DoxyCodeLine{00124\ \ \ uint32\_t\ getUnixTimestamp();}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00132\ \ \ \textcolor{keyword}{enum}\ MessageType\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ CHECK\_FW\_CMD\ =\ 0x01,}
+\DoxyCodeLine{00134\ \ \ \ \ BOOTLOADER\_READY\_CMD\ =\ 0x02,}
+\DoxyCodeLine{00135\ \ \ \ \ READY\_TO\_RECEIVE\_DATA\_CMD\ =\ 0x03,}
+\DoxyCodeLine{00136\ \ \ \ \ SEND\_WEIGHT\_CMD\_TRANSMIT\_PREPARE\ =\ 0x04,}
+\DoxyCodeLine{00137\ \ \ \ \ SEND\_WEIGHT\_CMD\_TRANSMIT\_WEIGHT\_ARRAY\ =\ 0x05,}
+\DoxyCodeLine{00138\ \ \ \ \ GET\_TIMESTAMP\_CMD\ =\ 0x06}
+\DoxyCodeLine{00139\ \ \ \};}
+\DoxyCodeLine{00140\ \};}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

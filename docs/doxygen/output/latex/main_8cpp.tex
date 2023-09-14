@@ -1,0 +1,78 @@
+\hypertarget{main_8cpp}{}\doxysection{/home/esp/esp\+\_\+projects/platformio\+\_\+velvet/\+Velvet\+\_\+test/src/main.cpp File Reference}
+\label{main_8cpp}\index{/home/esp/esp\_projects/platformio\_velvet/Velvet\_test/src/main.cpp@{/home/esp/esp\_projects/platformio\_velvet/Velvet\_test/src/main.cpp}}
+
+
+Главный файл проекта \doxylink{classESP32__STM__UART}{ESP32\+\_\+\+STM\+\_\+\+UART}. Точка входа в программу  
+
+
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+{\ttfamily \#include $<$Wi\+Fi.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}ESP32\+\_\+\+STM\+\_\+\+UART.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Settings\+\_\+\+ESP.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$HTTPClient.\+h$>$}\newline
+{\ttfamily \#include $<$Update.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8cpp_a4fc01d736fe50cf5b977f755b675f11d}{setup}} ()
+\begin{DoxyCompactList}\small\item\em Настраивает начальные параметры, такие как последовательный порт и подключение Wi-\/\+Fi. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8cpp_afe461d27b9c48d5921c00d521181f12f}\label{main_8cpp_afe461d27b9c48d5921c00d521181f12f}} 
+void {\bfseries loop} ()
+\begin{DoxyCompactList}\small\item\em Основной цикл программы, обрабатывает входящие сообщения через stm\+Uart. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{main_8cpp_a587ba0cb07f02913598610049a3bbb79}\label{main_8cpp_a587ba0cb07f02913598610049a3bbb79}} 
+const char $\ast$ {\bfseries ssid} = \char`\"{}SSID\char`\"{}
+\begin{DoxyCompactList}\small\item\em SSID Wi-\/\+Fi сети, к которой должен подключаться ESP32. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8cpp_aa4a2ebcb494493f648ae1e6975672575}\label{main_8cpp_aa4a2ebcb494493f648ae1e6975672575}} 
+const char $\ast$ {\bfseries password} = \char`\"{}PASSWORD\char`\"{}
+\begin{DoxyCompactList}\small\item\em Пароль Wi-\/\+Fi сети, к которой должен подключаться ESP32. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8cpp_acab6f414470b7c070947ee07af7446a4}\label{main_8cpp_acab6f414470b7c070947ee07af7446a4}} 
+bool {\bfseries debug\+\_\+flag} = false
+\begin{DoxyCompactList}\small\item\em Логическое значение, определяющее, следует ли печатать входную переменную. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8cpp_a397ee85960917807ae0013989bdd92d1}\label{main_8cpp_a397ee85960917807ae0013989bdd92d1}} 
+uint32\+\_\+t {\bfseries uart\+Baud\+Rate} = 115200
+\item 
+\mbox{\hyperlink{classESP32__STM__UART}{ESP32\+\_\+\+STM\+\_\+\+UART}} \mbox{\hyperlink{main_8cpp_afa799768597ad7ba4b32bcbdb1aca63f}{stm\+Uart}} (Serial2, uart\+Baud\+Rate)
+\begin{DoxyCompactList}\small\item\em Создает экземпляр \doxylink{classESP32__STM__UART}{ESP32\+\_\+\+STM\+\_\+\+UART} для обработки сообщений. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Главный файл проекта \doxylink{classESP32__STM__UART}{ESP32\+\_\+\+STM\+\_\+\+UART}. Точка входа в программу 
+
+В функции \doxylink{main_8cpp_a4fc01d736fe50cf5b977f755b675f11d}{setup()} происходит инициализация устройств и настройка параметров UART. В функции \doxylink{main_8cpp_afe461d27b9c48d5921c00d521181f12f}{loop()} происходит обработка входящих команд и отправка ответов на STM32. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8cpp_a4fc01d736fe50cf5b977f755b675f11d}\label{main_8cpp_a4fc01d736fe50cf5b977f755b675f11d}} 
+\index{main.cpp@{main.cpp}!setup@{setup}}
+\index{setup@{setup}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Настраивает начальные параметры, такие как последовательный порт и подключение Wi-\/\+Fi. 
+
+Подключение к wi-\/fi retries раз
+
+Не удалось подключиться к Wi-\/\+Fi, здесь можно добавить обработку ошибок
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{main_8cpp_afa799768597ad7ba4b32bcbdb1aca63f}\label{main_8cpp_afa799768597ad7ba4b32bcbdb1aca63f}} 
+\index{main.cpp@{main.cpp}!stmUart@{stmUart}}
+\index{stmUart@{stmUart}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{stmUart}{stmUart}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classESP32__STM__UART}{ESP32\+\_\+\+STM\+\_\+\+UART}} stm\+Uart(Serial2, uart\+Baud\+Rate) (\begin{DoxyParamCaption}\item[{Serial2}]{,  }\item[{uart\+Baud\+Rate}]{ }\end{DoxyParamCaption})}
+
+
+
+Создает экземпляр \doxylink{classESP32__STM__UART}{ESP32\+\_\+\+STM\+\_\+\+UART} для обработки сообщений. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Serial2} & Аппаратный последовательный порт, используемый для общения. \\
+\hline
+{\em uart\+Baud\+Rate} & Скорость передачи данных в бод (baud rate) для последовательного порта. \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,122 @@
+\hypertarget{classESP32__STM__UART}{}\doxysection{ESP32\+\_\+\+STM\+\_\+\+UART Class Reference}
+\label{classESP32__STM__UART}\index{ESP32\_STM\_UART@{ESP32\_STM\_UART}}
+
+
+Класс для обработки коммуникации с STM32 по протоколу, основанному на UART. Данный класс реализует протокол обмена данными между микроконтроллерами ESP32 и STM32 с помощью интерфейса UART. Он предоставляет ряд методов для отправки и получения команд и данных, в том числе\+:  
+
+
+
+
+{\ttfamily \#include $<$ESP32\+\_\+\+STM\+\_\+\+UART.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classESP32__STM__UART_a0d1f1c45f3cb0363497fe664a7e61e97}{ESP32\+\_\+\+STM\+\_\+\+UART}} (Hardware\+Serial \&serial, uint32\+\_\+t baud\+Rate)
+\begin{DoxyCompactList}\small\item\em Конструктор класса \doxylink{classESP32__STM__UART}{ESP32\+\_\+\+STM\+\_\+\+UART}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classESP32__STM__UART_aef1a4595b1d53bbffdddaaebf126cf9f}{check\+\_\+wifi}} ()
+\begin{DoxyCompactList}\small\item\em Проверяет наличие подключения к Wi-\/\+Fi. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classESP32__STM__UART_ac055e9f800bed6f3a38ba53b2cd1b22f}{process\+Incoming\+Message}} ()
+\begin{DoxyCompactList}\small\item\em Обрабатывает входящие сообщения. Метод используется для обработки входящих сообщений от STM32. Он определяет тип сообщения и вызывает соответствующую функцию для обработки сообщения. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс для обработки коммуникации с STM32 по протоколу, основанному на UART. Данный класс реализует протокол обмена данными между микроконтроллерами ESP32 и STM32 с помощью интерфейса UART. Он предоставляет ряд методов для отправки и получения команд и данных, в том числе\+: 
+
+
+\begin{DoxyItemize}
+\item проверка наличия подключения к Wi-\/\+Fi;
+\item обработка входящих сообщений;
+\item отправка данных на сервер;
+\item проверка версии прошивки;
+\item отправка ответов на запросы передачи весовых данных;
+\item отправка метки времени в формате unix timestamp;
+\item передача данных прошивки на STM. 
+\end{DoxyItemize}
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classESP32__STM__UART_a0d1f1c45f3cb0363497fe664a7e61e97}\label{classESP32__STM__UART_a0d1f1c45f3cb0363497fe664a7e61e97}} 
+\index{ESP32\_STM\_UART@{ESP32\_STM\_UART}!ESP32\_STM\_UART@{ESP32\_STM\_UART}}
+\index{ESP32\_STM\_UART@{ESP32\_STM\_UART}!ESP32\_STM\_UART@{ESP32\_STM\_UART}}
+\doxysubsubsection{\texorpdfstring{ESP32\_STM\_UART()}{ESP32\_STM\_UART()}}
+{\footnotesize\ttfamily ESP32\+\_\+\+STM\+\_\+\+UART\+::\+ESP32\+\_\+\+STM\+\_\+\+UART (\begin{DoxyParamCaption}\item[{Hardware\+Serial \&}]{serial,  }\item[{uint32\+\_\+t}]{baud\+Rate }\end{DoxyParamCaption})}
+
+
+
+Конструктор класса \doxylink{classESP32__STM__UART}{ESP32\+\_\+\+STM\+\_\+\+UART}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em serial} & Интерфейс UART, который будет использоваться для коммуникации. \\
+\hline
+{\em baud\+Rate} & Скорость передачи данных в бодах.\\
+\hline
+\end{DoxyParams}
+
+
+Инициализирует объект \doxylink{classESP32__STM__UART}{ESP32\+\_\+\+STM\+\_\+\+UART} и настраивает серийное соединение.
+
+
+\begin{DoxyParams}{Parameters}
+{\em serial} & Ссылка на объект Hardware\+Serial для использования. \\
+\hline
+{\em baud\+Rate} & Скорость передачи данных для серийного соединения.\\
+\hline
+\end{DoxyParams}
+Пример создания объекта 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{classESP32__STM__UART}{ESP32\_STM\_UART}}\ \mbox{\hyperlink{main_8cpp_afa799768597ad7ba4b32bcbdb1aca63f}{stmUart}}(Serial2,\ uartBaudRate);}
+
+\end{DoxyCode}
+ 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classESP32__STM__UART_aef1a4595b1d53bbffdddaaebf126cf9f}\label{classESP32__STM__UART_aef1a4595b1d53bbffdddaaebf126cf9f}} 
+\index{ESP32\_STM\_UART@{ESP32\_STM\_UART}!check\_wifi@{check\_wifi}}
+\index{check\_wifi@{check\_wifi}!ESP32\_STM\_UART@{ESP32\_STM\_UART}}
+\doxysubsubsection{\texorpdfstring{check\_wifi()}{check\_wifi()}}
+{\footnotesize\ttfamily bool ESP32\+\_\+\+STM\+\_\+\+UART\+::check\+\_\+wifi (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Проверяет наличие подключения к Wi-\/\+Fi. 
+
+Проверка подключения к Wi-\/\+Fi.
+
+\begin{DoxyReturn}{Returns}
+Логическое значение, указывающее наличие подключения к Wi-\/\+Fi.
+\end{DoxyReturn}
+
+
+Функция проверяет состояние подключения к Wi-\/\+Fi и пытается подключиться, если еще не подключено.
+
+\begin{DoxyReturn}{Returns}
+true, если подключение к Wi-\/\+Fi успешно установлено, иначе false. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classESP32__STM__UART_ac055e9f800bed6f3a38ba53b2cd1b22f}\label{classESP32__STM__UART_ac055e9f800bed6f3a38ba53b2cd1b22f}} 
+\index{ESP32\_STM\_UART@{ESP32\_STM\_UART}!processIncomingMessage@{processIncomingMessage}}
+\index{processIncomingMessage@{processIncomingMessage}!ESP32\_STM\_UART@{ESP32\_STM\_UART}}
+\doxysubsubsection{\texorpdfstring{processIncomingMessage()}{processIncomingMessage()}}
+{\footnotesize\ttfamily void ESP32\+\_\+\+STM\+\_\+\+UART\+::process\+Incoming\+Message (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Обрабатывает входящие сообщения. Метод используется для обработки входящих сообщений от STM32. Он определяет тип сообщения и вызывает соответствующую функцию для обработки сообщения. 
+
+Обрабатывает входящие команды от STM к ESP32.
+
+Данная функция читает байты, переданные от STM, и выполняет соответствующие действия в зависимости от кода команды. Команды, которые могут быть обработаны, включают CHECK\+\_\+\+FW\+\_\+\+CMD, BOOTLOADER\+\_\+\+READY\+\_\+\+CMD, SEND\+\_\+\+WEIGHT\+\_\+\+CMD\+\_\+\+TRANSMIT\+\_\+\+PREPARE и GET\+\_\+\+TIMESTAMP\+\_\+\+CMD. \begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Для корректной обработки команд необходимо, чтобы команды соответствовали протоколу общения между STM и ESP32. 
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+Протокол общения между устройствами STM и ESP32 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/esp/esp\+\_\+projects/platformio\+\_\+velvet/\+Velvet\+\_\+test/lib/\+ESP32\+\_\+\+STM\+\_\+\+UART/include/\mbox{\hyperlink{ESP32__STM__UART_8h}{ESP32\+\_\+\+STM\+\_\+\+UART.\+h}}\item 
+/home/esp/esp\+\_\+projects/platformio\+\_\+velvet/\+Velvet\+\_\+test/lib/\+ESP32\+\_\+\+STM\+\_\+\+UART/src/\mbox{\hyperlink{ESP32__STM__UART_8cpp}{ESP32\+\_\+\+STM\+\_\+\+UART.\+cpp}}\end{DoxyCompactItemize}

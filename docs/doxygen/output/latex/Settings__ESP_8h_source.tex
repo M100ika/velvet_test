@@ -1,0 +1,27 @@
+\hypertarget{Settings__ESP_8h_source}{}\doxysection{Settings\+\_\+\+ESP.\+h}
+\label{Settings__ESP_8h_source}\index{/home/esp/esp\_projects/platformio\_velvet/Velvet\_test/lib/Settings\_ESP/Settings\_ESP.h@{/home/esp/esp\_projects/platformio\_velvet/Velvet\_test/lib/Settings\_ESP/Settings\_ESP.h}}
+\mbox{\hyperlink{Settings__ESP_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ Settings\_ESP\_h}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ Settings\_ESP\_h}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{Settings__ESP_8h_a587ba0cb07f02913598610049a3bbb79}{ssid}};}
+\DoxyCodeLine{00019\ \textcolor{keyword}{extern}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{Settings__ESP_8h_aa4a2ebcb494493f648ae1e6975672575}{password}};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{Settings__ESP_8h_acab6f414470b7c070947ee07af7446a4}{debug\_flag}};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{Settings__ESP_8h_ab16a76b03b06ae54a38261047a7d68af}{print\_debug}}(\textcolor{keywordtype}{bool}\ flag,\ \textcolor{keyword}{const}\ T\&\ variable)\ \{}
+\DoxyCodeLine{00046\ \ \ \textcolor{keywordflow}{if}\ (flag)\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ Serial.println(variable);}
+\DoxyCodeLine{00048\ \ \ \}}
+\DoxyCodeLine{00049\ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "*.tcc": "cpp",
+        "array": "cpp",
+        "string": "cpp",
+        "string_view": "cpp"
+    },
+    "cmake.sourceDirectory": "/home/esp/esp_projects/platformio_velvet/Velvet_test/.pio/libdeps/esp32dev/Unity"
+}

@@ -1,0 +1,65 @@
+\hypertarget{Settings__ESP_8h}{}\doxysection{/home/esp/esp\+\_\+projects/platformio\+\_\+velvet/\+Velvet\+\_\+test/lib/\+Settings\+\_\+\+ESP/\+Settings\+\_\+\+ESP.h File Reference}
+\label{Settings__ESP_8h}\index{/home/esp/esp\_projects/platformio\_velvet/Velvet\_test/lib/Settings\_ESP/Settings\_ESP.h@{/home/esp/esp\_projects/platformio\_velvet/Velvet\_test/lib/Settings\_ESP/Settings\_ESP.h}}
+
+
+Файл содержит внешние объявления функции отладки, SSID и пароля Wi-\/\+Fi.  
+
+
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{Settings__ESP_8h_ab16a76b03b06ae54a38261047a7d68af}{print\+\_\+debug}} (bool flag, const T \&variable)
+\begin{DoxyCompactList}\small\item\em Функция отладки, которая печатает входную переменную, если флаг равен true. Состояние флага устанавливается в \doxylink{main_8cpp}{main.\+cpp} но видно во всём проекте. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{Settings__ESP_8h_a587ba0cb07f02913598610049a3bbb79}\label{Settings__ESP_8h_a587ba0cb07f02913598610049a3bbb79}} 
+const char $\ast$ {\bfseries ssid}
+\begin{DoxyCompactList}\small\item\em SSID Wi-\/\+Fi сети, к которой должен подключаться ESP32. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{Settings__ESP_8h_aa4a2ebcb494493f648ae1e6975672575}\label{Settings__ESP_8h_aa4a2ebcb494493f648ae1e6975672575}} 
+const char $\ast$ {\bfseries password}
+\begin{DoxyCompactList}\small\item\em Пароль Wi-\/\+Fi сети, к которой должен подключаться ESP32. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{Settings__ESP_8h_acab6f414470b7c070947ee07af7446a4}\label{Settings__ESP_8h_acab6f414470b7c070947ee07af7446a4}} 
+bool {\bfseries debug\+\_\+flag}
+\begin{DoxyCompactList}\small\item\em Логическое значение, определяющее, следует ли печатать входную переменную. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Файл содержит внешние объявления функции отладки, SSID и пароля Wi-\/\+Fi. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{Settings__ESP_8h_ab16a76b03b06ae54a38261047a7d68af}\label{Settings__ESP_8h_ab16a76b03b06ae54a38261047a7d68af}} 
+\index{Settings\_ESP.h@{Settings\_ESP.h}!print\_debug@{print\_debug}}
+\index{print\_debug@{print\_debug}!Settings\_ESP.h@{Settings\_ESP.h}}
+\doxysubsubsection{\texorpdfstring{print\_debug()}{print\_debug()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void print\+\_\+debug (\begin{DoxyParamCaption}\item[{bool}]{flag,  }\item[{const T \&}]{variable }\end{DoxyParamCaption})}
+
+
+
+Функция отладки, которая печатает входную переменную, если флаг равен true. Состояние флага устанавливается в \doxylink{main_8cpp}{main.\+cpp} но видно во всём проекте. 
+
+Эта шаблонная функция принимает логический флаг и переменную любого типа. Он печатает значение переменной использование Serial.\+println(), если флаг установлен. Если флаг ложный, функция ничего не делает.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Тип входной переменной для печати. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em flag} & Логическое значение, определяющее, следует ли печатать входную переменную. \\
+\hline
+{\em variable} & Переменная, которая будет напечатана, если флаг истинен.\\
+\hline
+\end{DoxyParams}
+Пример использования\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ number\ =\ 42;}
+\DoxyCodeLine{\textcolor{keywordtype}{bool}\ \mbox{\hyperlink{Settings__ESP_8h_acab6f414470b7c070947ee07af7446a4}{debug\_flag}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\mbox{\hyperlink{Settings__ESP_8h_ab16a76b03b06ae54a38261047a7d68af}{print\_debug}}(\mbox{\hyperlink{Settings__ESP_8h_acab6f414470b7c070947ee07af7446a4}{debug\_flag}},\ number);}
+
+\end{DoxyCode}
+ 
