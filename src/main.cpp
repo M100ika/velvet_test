@@ -65,7 +65,7 @@ void setup() {
     if(stmUart.check_wifi()){
         print_debug(debug_flag, String("Let's start"));
     }
-    else print_debug(debug_flag, String("Check ssid & pass!"));
+    else {print_debug(debug_flag, String("Check ssid & pass!"));}
         /**
          * @brief Не удалось подключиться к Wi-Fi, здесь можно добавить обработку ошибок
         */ 
