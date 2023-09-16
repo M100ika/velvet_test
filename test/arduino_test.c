@@ -30,6 +30,25 @@
 //     }
 // }
 
+// void get_timestamp(){
+//     byte get_timestamp_cmd = {0x06, 0x01, 0X00, 0x00, 0x00, 0x00, 0x00, 0x00};
+//     for (int i = 0; i < get_timestamp_cmd[i]){
+//         espSerial.write(get_timestamp_cmd[i]);
+//     }
+//     Serial.println("Cmd get_timestamp sent.");
+//     Serial.println("Waiting response");
+//     int timestamp; 
+//     delay(500);
+//     if (espSerial.read() == 0x06){
+//         if (espSerial.read() == 0x01){
+//             for (int i = 0; i < 4){
+//                 timestamp.push_back(_serial.read());
+//                 };
+//             Serila.println(timestamp);            
+//         } else Serial.println("Connection error");
+//     } else Serila.println("Something wrong");
+// }
+
 // void send_weight_array_cmd(){
 //   byte weight_array[] = { // Send weight. Message Weight
 //     0x05, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x64, 0x36, 0x5f, 0x1d, 0x3f, 0x80, 0x00, 0x00,
@@ -43,7 +62,7 @@
 //   Serial.println("Message Weight_array sended!");
 //   // Wait for a moment and then show the response from ESP32
 //   delay(500);
-//   while (espSerial.available() > 0) {
+//   while (espSerial.available() > 0) {A
 //     Serial.write(espSerial.read());
 //   }
 // }
@@ -54,15 +73,40 @@
 //   // Check if there's data available from the Serial
 //   if (Serial.available() > 0) {
 //     userInput = Serial.read();
+//     switch (userInput)
+//     {
+//     case "A":
+//         send_data_prepare_cmd();
+//         break;
+    
+//     case "Q":
+//         send_weight_array_cmd();
+//         break;
+    
+//     case "T":
+//         get_timestamp();
+//         break;
+    
+//     case "\n":
+//         break;
 
-//     if (userInput == 'A') {
-//       send_data_prepare_cmd();
-//     } 
-//     else if (userInput == 'Q') {
-//       send_weight_array_cmd();
-//     } 
-//     else if (userInput != '\n' && userInput != '\r') {
-//       Serial.println("Error message!");
+//     case "\r":
+//         break;
+    
+//     default:
+//         Serial.println("Error cmd");
+//         break;
 //     }
+
+
+//     // if (userInput == 'A') {
+//     //   send_data_prepare_cmd();
+//     // } 
+//     // else if (userInput == 'Q') {
+//     //   send_weight_array_cmd();
+//     // } 
+//     // else if (userInput != '\n' && userInput != '\r') {
+//     //   Serial.println("Error message!");
+//     // }
 //   }
 // }
