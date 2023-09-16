@@ -54,7 +54,8 @@ ESP32_STM_UART stmUart(Serial2, uartBaudRate);
  */
 
 void setup() {
-    Serial2.begin(uartBaudRate, SERIAL_8N1, 12, 13);
+    // Serial2.begin(uartBaudRate, SERIAL_8N1, 21, 22); // Serial2.begin(baud-rate, protocol, RX pin, TX pin);
+    Serial2.begin(uartBaudRate, SERIAL_8N1, 22, 21); // Марат, я не уверен. Если буфер будет пустым то измени rx pin, tx pin
     Serial.begin(uartBaudRate);
     print_debug(debug_flag, String("Ready"));
     WiFi.begin(ssid, password);
