@@ -26,7 +26,6 @@ extern bool debug_flag;
  * @brief Количество попыток переподключения к Wi-Fi сети.
  */
 extern int retries;
-
 /**
  * @brief Функция отладки, которая печатает входную переменную, если флаг равен true. Состояние флага устанавливается в main.cpp но видно во всём проекте.
  *
@@ -50,5 +49,9 @@ void print_debug(bool flag, const T& variable) {
     Serial.println(variable);
   }
 }
-
+/**
+ * @brief Функция конвертирования MAC-адреса в строку. MAC-адрес - единственный уникальный индикатор
+ * 
+ */
+String macToString(uint64_t mac);
 #endif

@@ -34,10 +34,15 @@
 #include <HTTPClient.h>
 #include <Update.h>
 
+
 const char* ssid = "Simba";
 const char* password = "Mainura1994";
 bool debug_flag = true;
-String serialNumber = String(ESP.getChipRevision());
+//String serialNumber = String(ESP.getChipRevision());
+
+uint64_t mac = ESP.getEfuseMac(); 
+String serialNumber = macToString(mac);
+
 
 //HardwareSerial Serial2(2);
 uint32_t uartBaudRate = 115200; 
@@ -62,7 +67,22 @@ void setup() {
     /**
      * @brief Подключение к wi-fi retries раз
     */
-    print_debug(debug_flag, String("Wi-Fi Connection Start"));
+    print_debug(debug_flag, String("Testing the STM-ESP32 communication protocol. Project Velvet."));
+    print_debug(debug_flag, String("Author of the code for the ESP32 microcontroller: Maxat Suieubayev."));
+    print_debug(debug_flag, String("Author of the code for STM: Marat Kamalov."));
+    print_debug(debug_flag, String("Supervisor: Sanat Baiguanish."));
+    print_debug(debug_flag, String(""));
+    print_debug(debug_flag, String("We are currently in ESP32.\nAt the moment, the debug_flag is set to true in main.cpp."));
+    print_debug(debug_flag, String("The debug_flag is necessary for displaying the process happening inside the ESP32 microcontroller. "));
+    print_debug(debug_flag, String("To disable message output, set debug_flag to False."));
+    print_debug(debug_flag, String(""));
+    print_debug(debug_flag, String("ESP32 code version: 0.0.2"));
+    print_debug(debug_flag, String("ESP32 Serial number: ")+String(serialNumber));
+    print_debug(debug_flag, String(""));
+    print_debug(debug_flag, String("Please just enjoy!"));
+    
+    print_debug(debug_flag, String("Wi-Fi Connection Starting"));
+
     if(stmUart.check_wifi()){
         print_debug(debug_flag, String("Let's start"));
     }

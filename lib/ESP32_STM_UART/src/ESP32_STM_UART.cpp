@@ -129,23 +129,49 @@ void ESP32_STM_UART::checkFirmware(uint8_t version0, uint8_t version1) {
         sendCheckFwRsp(0x02);
         return;
     }
-    String version = String(version0) + "." + String(version1);
-    //String serialNumber = String(ESP.getChipRevision());
+    String version = "velvet_stm_0." + String(version0) + "." + String(version1);
     // Получение обновления прошивки с сервера
     WiFiClientSecure wifiClient;
     HTTPClient http;
-    String url = "https://smart-farm.kz:8502/api/v2/ActualScalesFirmware";
-    String postData = "serialNumber=" + serialNumber + "&firmwareVersion=" + version;
-    print_debug(debug_flag, String("SerialNumber " + String(serialNumber) + "Version" + String(version)));
-    http.begin(wifiClient, url);
-    http.addHeader("Content-Type", "application/json; charset=utf-8");
-    int httpResponseCode = http.POST(postData);
-    print_debug(debug_flag, String("Status_code: " + String(httpResponseCode)));
-    if (httpResponseCode != 200) {
+    wifiClient.setInsecure();
+    if (!wifiClient.connect("smart-farm.kz", 8502))
+        print_debug(debug_flag, String("Connection failed!"));
+    else 
+        print_debug(debug_flag, String("Connection succsesfully"));
+    String url = "https://smart-farm.kz:8502/api/v2/ActualScalesFirmware?serialNumber=" + serialNumber + "&firmwareVersion=velvet" + version;
+    print_debug(debug_flag, String("SerialNumber " + String(serialNumber) + " Version " + String(version)));
+    const char* headerKeys[] = {"CRC", "Version"};
+    http.collectHeaders(headerKeys, 2);
+    if (!http.begin(wifiClient, url)) {
+        print_debug(debug_flag, "HTTP begin failed");
         sendCheckFwRsp(0x03);
         return;
     }
-    // Получение заголовков и содержимого файла
+    int httpResponseCode = http.GET();
+    print_debug(debug_flag, String("Status_code: ") + String(httpResponseCode));
+    if (httpResponseCode != 200) {
+        print_debug(debug_flag, "Error");
+        sendCheckFwRsp(0x03);
+        http.end();
+        return;
+    }
+    if (downloadFirmware(http)) {
+        print_debug(debug_flag, "Firmware successfully downloaded.");
+
+    } else {
+        print_debug(debug_flag, "Downloading error.");
+        sendCheckFwRsp(0x03);
+    }
+    http.end();
+}
+
+
+bool ESP32_STM_UART::downloadFirmware(HTTPClient &http) {
+    size_t numHeaders = http.headers();
+    print_debug(debug_flag, String("Headers list: "));
+    for (size_t i = 0; i < numHeaders; i++) {
+        print_debug(debug_flag, String("Header[" + String(i) + "]: " + http.headerName(i) + " = " + http.header(i)));
+    }
     int contentLength = http.getSize();
     String fileCRC = http.header("CRC");
     String fileVersion = http.header("Version");
@@ -155,6 +181,7 @@ void ESP32_STM_UART::checkFirmware(uint8_t version0, uint8_t version1) {
     size_t firmwareDataIndex = 0;
     auto stream = http.getStreamPtr();
     uint32_t crc = 0;
+
     while (http.connected() && (contentLength > 0 || contentLength == -1)) {
         // Получаем данные и записываем их в массив firmwareData
         size_t len = stream->available();
@@ -175,22 +202,20 @@ void ESP32_STM_UART::checkFirmware(uint8_t version0, uint8_t version1) {
     char crcBuffer[9];
     sprintf(crcBuffer, "%08x", crc);
     String calculatedCRC = String(crcBuffer);
-    // Завершение работы с HTTP клиентом
     http.end();
-
+    print_debug(debug_flag, String("Current CRC is: ") + String(fileCRC));
+    print_debug(debug_flag, String("Calculated CRC is: ") + String(calculatedCRC));
+    bool success = false;
     if (calculatedCRC.equalsIgnoreCase(fileCRC)) {
         sendCheckFwRsp(0x01);
-        _firmwareData = firmwareData;
+        _firmwareData = firmwareData;   // Предполагается, что _firmwareData и _firmwareSize являются глобальными переменными или членами класса.
         _firmwareSize = firmwareSize;
         print_debug(debug_flag, String("Everything OK"));
-    } else {
-        sendCheckFwRsp(0x02);
-        print_debug(debug_flag, String("Error: Wrong CRC"));
-    }
-
+        success = true;
+    } else print_debug(debug_flag, String("Error: Wrong CRC"));
     // Освобождение памяти, выделенной для массива firmwareData
     delete[] firmwareData;
-    //firmwareSize = 0;
+    return success;
 }
 
 void ESP32_STM_UART::sendCheckFwRsp(uint8_t result) {
@@ -419,4 +444,10 @@ void ESP32_STM_UART::sendTimestampRsp(uint32_t timestamp, uint8_t result) {
 
     _serial.write(response, sizeof(response));
     print_debug(debug_flag, String("Timestamp response sent."));
+    String responseString = "Response: ";
+    for (int i = 0; i < sizeof(response); i++) {
+        if (i > 0) responseString += ", ";
+        responseString += "0x" + String(response[i], HEX);
+    }
+    print_debug(debug_flag, responseString);
 } 

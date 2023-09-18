@@ -8,6 +8,7 @@
 
 #include <Arduino.h>
 #include <HardwareSerial.h>
+#include <HTTPClient.h>
 
 /**
  * @class ESP32_STM_UART
@@ -127,6 +128,8 @@ private:
  * Это перечисление определяет типы сообщений, которые используются для обмена данными между ESP32 и STM32 в протоколе общения.
  * Оно определяет значения, используемые в поле типа сообщения пакета.
 */
+
+  bool downloadFirmware(HTTPClient &http);
 
   enum MessageType {
     CHECK_FW_CMD = 0x01,
