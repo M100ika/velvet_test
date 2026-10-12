@@ -35,8 +35,14 @@
 #include <Update.h>
 
 
-const char* ssid = "Simba";
-const char* password = "Mainura1994";
+// Учётные данные Wi-Fi не хранятся в git: см. src/secrets.example.h
+#if __has_include("secrets.h")
+#include "secrets.h"
+#else
+#error "Нет src/secrets.h: скопируйте src/secrets.example.h в src/secrets.h и заполните значения"
+#endif
+const char* ssid = WIFI_SSID;
+const char* password = WIFI_PASSWORD;
 bool debug_flag = true;
 //String serialNumber = String(ESP.getChipRevision());
 

@@ -7,3 +7,6 @@ test/Protocol.txt
 test/Процесс общения ESP - STM - Сервер.plantuml
 test/Описание
 test/firmware.bin
+
+# Локальные учётные данные (шаблон: src/secrets.example.h)
+src/secrets.h
